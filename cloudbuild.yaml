@@ -4,14 +4,14 @@ steps:
       - skaffold
       - build
       - '--interactive=false'
-      - '--default-repo=us-central1-docker.pkg.dev/vsz-cd-preview/web-app'
+      - '--default-repo=us-central1-docker.pkg.dev/$PROJECT_ID/web-app'
       - '--file-output=artifacts.json'
     dir: example
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     args: 
       - '-c'
       - >
-        gcloud beta deploy releases create rel-$(date +%y%m%d-%s)
+        gcloud beta deploy releases create r-$SHORT_SHA
         --delivery-pipeline=web-app --build-artifacts=artifacts.json
         --source=./
         --region=us-central1
