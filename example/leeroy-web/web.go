@@ -19,7 +19,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	log.Print("Cloud Next 2021! - leeroy web server ready! change")
+	log.Print("Cloud Next 2021! - leeroy web server ready! change again")
 	http.HandleFunc("/", handler)
 	http.ListenAndServe(":8080", nil)
 }
